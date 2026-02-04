@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Kavyaa ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:black;
+  color:white;
+  height:100vh;
+  overflow:hidden;
+}
+
+/* Floating Emojis */
+.float{
+  position:fixed;
+  font-size:22px;
+  animation:float 8s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes float{
+  0%{transform:translateY(110vh);}
+  100%{transform:translateY(-10vh);}
+}
+
+/* Fireworks */
+.firework{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:gold;
+  border-radius:50%;
+  pointer-events:none;
+  animation:boom 1s ease-out forwards;
+}
+
+@keyframes boom{
+  from{transform:scale(1);opacity:1;}
+  to{transform:scale(6);opacity:0;}
+}
+
+/* Pages */
+.page{
+  display:none;
+  height:100vh;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:20px;
+}
+
+.active{display:flex;}
+
+h1{margin-bottom:20px;}
+
+.btn{
+  padding:12px 25px;
+  background:linear-gradient(45deg,#ff004c,#ff6fa1);
+  border:none;
+  color:white;
+  border-radius:30px;
+  margin:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{transform:scale(1.1);}
+
+/* Name Animation */
+.name{
+  font-family:'Great Vibes',cursive;
+  font-size:3rem;
+  color:pink;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 5px pink;}
+  to{text-shadow:0 0 25px hotpink;}
+}
+
+/* Reveal Image */
+.reveal{
+  width:260px;
+  height:360px;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 0 30px red;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.reveal img{
+  width:100%;
+  height:100%;
+  object-fit:contain;   /* FULL image dikhayega frame me */
+  object-position:center;
+  position:absolute;
+  bottom:0;
+  transition:2s ease;
+}
+
+.reveal img.show{
+  bottom:0;
+}
+
+/* Proposal Page */
+.proposal{
+  background:linear-gradient(120deg,#2b0000,black);
+}
+
+.pro-box{
+  background:rgba(0,0,0,0.7);
+  padding:25px;
+  border-radius:20px;
+  max-width:500px;
+  box-shadow:0 0 25px red;
+}
+
+.signature{
+  margin-top:20px;
+  font-family:'Great Vibes',cursive;
+  font-size:1.8rem;
+  color:pink;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .name{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+
+<audio id="bgMusic" src="music.mp3"></audio>
+
+<!-- Floating Emojis -->
+<script>
+const icons=['❤️','🌹','💖','🎈','💕'];
+for(let i=0;i<40;i++){
+ let f=document.createElement('div');
+ f.className='float';
+ f.innerText=icons[Math.floor(Math.random()*icons.length)];
+ f.style.left=Math.random()*100+'vw';
+ f.style.animationDuration=5+Math.random()*6+'s';
+ document.body.appendChild(f);
+}
+</script>
+
+<!-- Page 1 -->
+<div class="page active" id="p1">
+<h1>Hey Kavyaa ❤️</h1>
+<div class="name">Do You Wanna See My Heart?</div>
+<button class="btn" onclick="go(2)">Yes 😘</button>
+<button class="btn" onclick="alert('Only Yes Allowed 💕')">No</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="p2">
+<h1>Play Music For Us 🎶</h1>
+<button class="btn" onclick="play()">Play ▶</button>
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="p3">
+<h1>Turn On The Love Light ✨</h1>
+<button class="btn" onclick="light()">Light On 💡</button>
+</div>
+
+<!-- Page 4 -->
+<div class="page" id="p4">
+<h1>My Angel Kavyaa 💖</h1>
+<div class="reveal">
+<img src="image.jpg" id="pic">
+</div>
+<button class="btn" onclick="go(5)">Next 💌</button>
+</div>
+
+<!-- Page 5 Proposal -->
+<div class="page proposal" id="p5">
+<div class="pro-box">
+<h1>Kavyaa 💍</h1>
+<p>
+I may not have heard your voice yet,
+I may not have seen you closely,
+but still you are very special to me.
+
+Through Instagram chats,
+you became my favorite feeling.
+
+I really like you,
+and I just want your attention.
+❤️
+</p>
+
+<h2>Will You Be My Girlfriend? 💖</h2>
+
+<div>
+<button class="btn" onclick="fireworks();alert('I Love You 😭❤️')">Yes 💍</button>
+<button class="btn" onclick="alert('Think Again 😘')">Think 💕</button>
+</div>
+
+<div class="signature">
+— Rocky 💕<br>📞 8809720988
+</div>
+</div>
+</div>
+
+<script>
+function go(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
+}
+
+function play(){
+ document.getElementById('bgMusic').play();
+ go(3);
+}
+
+function light(){
+ document.body.style.background='radial-gradient(circle,#550000,black)';
+ go(4);
+ setTimeout(()=>{
+  document.getElementById('pic').classList.add('show');
+ },500);
+}
+
+/* Fireworks Effect */
+function fireworks(){
+ for(let i=0;i<30;i++){
+  let f=document.createElement('div');
+  f.className='firework';
+  f.style.left=Math.random()*100+'vw';
+  f.style.top=Math.random()*100+'vh';
+  f.style.background=`hsl(${Math.random()*360},100%,60%)`;
+  document.body.appendChild(f);
+
+  setTimeout(()=>f.remove(),1000);
+ }
+}
+</script>
+
+</body>
+</html>
